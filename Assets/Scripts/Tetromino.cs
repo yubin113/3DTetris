@@ -144,7 +144,7 @@ public class Tetromino : MonoBehaviour
         }
     }
 
-    bool CheckValidMove()
+    public bool CheckValidMove()
     {
         foreach(Transform child in transform)
         {
