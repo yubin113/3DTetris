@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Tetromino : MonoBehaviour
 {
-
     float prevTime;
     float fallTime = 1.4f;
-    
+
+ 
     void Start()
     {
         //ButtonInputs.instance.SetActiveBlock(gameObject, this);
@@ -25,7 +25,7 @@ public class Tetromino : MonoBehaviour
         {
             transform.position += Vector3.down;
 
-            
+
             if (!CheckValidMove())
             {
                 transform.position += Vector3.up;
@@ -167,7 +167,7 @@ public class Tetromino : MonoBehaviour
         return true;
     }
 
-    public void SetSpeed()
+        public void SetSpeed()
     {
         fallTime = 0.1f;
     }
