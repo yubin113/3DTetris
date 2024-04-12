@@ -969,10 +969,7 @@ MonoBehaviour:
   gridSizeY: 9
   gridSizeZ: 6
   blockList:
-  - {fileID: 2857921341720936074, guid: 1f06712bc5e01894ea1a7dbac0fe45f6, type: 3}
-  - {fileID: 7119603534254364945, guid: 55d626d709254154281a564d47a052df, type: 3}
-  - {fileID: 2734551173680582155, guid: f711f638e9887084ab139a7c5b07ff17, type: 3}
-  - {fileID: 1186849439307318952, guid: 6e8f78db057944e41b013d1c5033dee0, type: 3}
+  - {fileID: 1186849439307318952, guid: 1b6f003736b866242b32ff75870f8077, type: 3}
   ghostList: []
   bottomPlane: {fileID: 997702542}
   N: {fileID: 42787895}

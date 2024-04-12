@@ -107,6 +107,13 @@ public class Tetromino : MonoBehaviour
         {
             setRotationInput(new Vector3(0, 0, -90));
         }
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+            SetSpeed();
+        }
+        if(Input.GetKeyUp(KeyCode.Space)){
+            fallTime = 1.4f;
+        }
     }
 
     public void setInput(Vector3 direction)
