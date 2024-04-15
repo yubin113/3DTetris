@@ -11,12 +11,15 @@ public class GameManager : MonoBehaviour
     int score;
     int levels;
     int layersCleared;
-
+    int playtime;
     int highScore;
 
     bool gameIsOver;
+    bool gameIsClear;
 
     float fallSpeed;
+
+    public bool isSpecialModeActive = false;
 
     private void Awake()
     {
@@ -45,5 +48,16 @@ public class GameManager : MonoBehaviour
         gameIsOver = true;
 
         UIHandler.instance.ActivateGameOverWindow();
+    }
+    public bool ReadGameIsClear()
+    {
+        return gameIsClear;
+    }
+
+    public void SetGameIsClear()
+    {
+        gameIsClear = true;
+
+        UIHandler.instance.ActivateGameClearWindow();
     }
 }

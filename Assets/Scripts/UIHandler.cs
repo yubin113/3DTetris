@@ -9,6 +9,7 @@ public class UIHandler : MonoBehaviour
     public static UIHandler instance;
        
     public GameObject gameOverWindow;
+    public GameObject gameClearWindow;
 
     private void Awake()
     {
@@ -18,9 +19,10 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         gameOverWindow.SetActive(false);
+        gameClearWindow.SetActive(false);
     }
 
-    
+        
     // public void UpdateHSUI(int highScore)
     //{
     //   highScoreText.text = "High Score: " + highScore.ToString();
@@ -29,5 +31,14 @@ public class UIHandler : MonoBehaviour
     public void ActivateGameOverWindow()
     {
         gameOverWindow.SetActive(true);
+    }
+
+    public void ActivateGameClearWindow()
+    {
+        gameClearWindow.SetActive(true);
+    }
+    public void OnSpecialModeButtonClicked()
+    {
+        GameManager.instance.isSpecialModeActive = true;
     }
 }

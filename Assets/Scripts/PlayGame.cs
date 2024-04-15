@@ -7,6 +7,7 @@ public class PlayGame : MonoBehaviour
 {
     public string SampleScene;
     public string MainMenu;
+    public string SamSam;
     public void StartGame()
     {
        SceneManager.LoadScene("SampleScene");
@@ -15,7 +16,9 @@ public class PlayGame : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-
-
-
+    public void StartMode()
+    {
+        SceneManager.LoadScene("SampleScene");
+        GameManager.instance.isSpecialModeActive = true;
+    }
 }

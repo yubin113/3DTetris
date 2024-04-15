@@ -160,12 +160,13 @@ public class PlayField : MonoBehaviour
                 //Move all Down By 1
             }
         }
-        if(layersCleared > 0)
+        if (layersCleared >= 1 && GameManager.instance.isSpecialModeActive) // 모드가 활성화되었을 때만 게임을 클리어
         {
+            GameManager.instance.SetGameIsClear(); // 게임 오버 상태를 설정하고 클리어 창을 활성화
+            return;
         }
     }
-
-    bool CheckFullLayer(int y)
+        public bool CheckFullLayer(int y)
     {
         for (int x = 0; x < gridSizeX; x++)
         {
