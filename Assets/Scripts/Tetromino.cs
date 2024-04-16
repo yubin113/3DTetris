@@ -15,6 +15,7 @@ public class Tetromino : MonoBehaviour
         //fallTime = GameManager.instance.ReadFallSpeed();
         if (!CheckValidMove())
         {
+            Debug.Log("game over!");
             //GameManager.instance.SetGameIsOver();
             //FindObjectOfType<AudioManager>().Play("GameOver");
         }
