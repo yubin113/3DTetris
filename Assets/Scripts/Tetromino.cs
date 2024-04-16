@@ -15,7 +15,6 @@ public class Tetromino : MonoBehaviour
         //fallTime = GameManager.instance.ReadFallSpeed();
         if (!CheckValidMove())
         {
-            Debug.Log("game over!");
             //GameManager.instance.SetGameIsOver();
             //FindObjectOfType<AudioManager>().Play("GameOver");
         }
@@ -109,12 +108,14 @@ public class Tetromino : MonoBehaviour
             setRotationInput(new Vector3(0, 0, -90));
         }
 
+        //스페이스 누르는 동안 속도 증가
         if(Input.GetKeyDown(KeyCode.Space)){
             SetSpeed();
         }
         if(Input.GetKeyUp(KeyCode.Space)){
             fallTime = 1.4f;
         }
+
     }
 
     public void setInput(Vector3 direction)

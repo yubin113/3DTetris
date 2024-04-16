@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotateAround : MonoBehaviour
 {
 
+    //메인 카메라
     Transform target;
     Transform rotTarget;
     Vector3 lastPos;
@@ -43,7 +44,7 @@ public class RotateAround : MonoBehaviour
         if (horizontalInput != 0 || verticalInput != 0)
         {
             float angleY = horizontalInput * sensitivity;
-        float angleX = verticalInput * sensitivity;
+            float angleX = verticalInput * sensitivity;
 
         // X AXIS
         Vector3 angles = rotTarget.transform.eulerAngles;

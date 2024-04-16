@@ -44,7 +44,6 @@ public class PlayField : MonoBehaviour
         theGrid = new Transform[gridSizeX, gridSizeY, gridSizeZ];
         //랜덤 변수 초기화
         CalculatePreview();
-        //블록 초기 위치 설정, calculatePreview()가 반복되어져 있는데 삭제해도 될듯?
         SpawnNewBlock();
     }
 
@@ -64,6 +63,7 @@ public class PlayField : MonoBehaviour
                 (int)pos.y >= 0); 
     }
 
+    //프레임마다 실행될 업데이트함수
     public void UpdateGrid(Tetromino block)
     {
         for (int x = 0; x < gridSizeX; x++)
@@ -74,8 +74,10 @@ public class PlayField : MonoBehaviour
                 {
                     if(theGrid[x,y,z]!=null)
                     {
+                        //현재 움직이는 블록이 맞는지 확인
                         if (theGrid[x, y, z].parent == block.transform)
                         {
+                            //맞으면 삭제
                             theGrid[x, y, z] = null;
                         }
                     }
@@ -142,6 +144,7 @@ public class PlayField : MonoBehaviour
         randomIndex = Random.Range(0, blockList.Length);
     }
 
+    //레이어 삭제 함수
     public void DeleteLayer()
     {
         int layersCleared = 0;
