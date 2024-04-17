@@ -134,6 +134,11 @@ public class PlayField : MonoBehaviour
             return;
         }
 
+        if(GameManager.instance.IsGameClear())// 게임이 클리어되었다면 블록 생성을 중단
+        {
+            Destroy(tempBlock);
+            return;
+        }
         // If the spawn position is valid, continue with the game
         //Spawn The Block
         GameObject newBlock = tempBlock;
@@ -163,11 +168,12 @@ public class PlayField : MonoBehaviour
                 //Move all Down By 1
             }
         }
-        if (layersCleared >= 1 && GameManager.instance.isSpecialModeActive) // 모드가 활성화되었을 때만 게임을 클리어
-        {
-            GameManager.instance.SetGameIsClear(); // 게임 오버 상태를 설정하고 클리어 창을 활성화
-            return;
-        }
+            if (layersCleared >= 1 && GameManager.instance.isSpecialModeActive) // 모드가 활성화되었을 때만 게임을 클리어
+            {
+                GameManager.instance.SetGameIsClear(); // 게임 오버 상태를 설정하고 클리어 창을 활성화
+                return;
+            }
+        
     }
         public bool CheckFullLayer(int y)
     {

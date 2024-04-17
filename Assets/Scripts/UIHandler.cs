@@ -37,8 +37,8 @@ public class UIHandler : MonoBehaviour
     {
         gameClearWindow.SetActive(true);
     }
-    public void OnSpecialModeButtonClicked()
-    {
-        GameManager.instance.isSpecialModeActive = true;
-    }
+   // public void OnSpecialModeButtonClicked()
+  //  {
+   //     GameManager.instance.isSpecialModeActive = true;
+   // }
 }
