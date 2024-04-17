@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using UnityEngine;
+using JetBrains.Annotations;
 
 public class PlayField : MonoBehaviour
 {
@@ -115,19 +116,21 @@ public class PlayField : MonoBehaviour
 
 
         //Spawn The Block
-        GameObject tempBlock = Instantiate(blockList[randomIndex], spawnPoint, Quaternion.identity)as GameObject;
+        GameObject tempBlock = Instantiate(blockList[randomIndex], spawnPoint, Quaternion.identity) as GameObject;
         //Ghost
         //GameObject newGhost = Instantiate(ghostList[randomIndex], spawnPoint, Quaternion.identity) as GameObject;
         Tetromino tetromino = tempBlock.GetComponent<Tetromino>();
 
         // Check if the spawn position is valid
-
+        
         // 블록 생성기 위치까지 도달 시 동작 중단, 블록 2종류 이상 사용 시 동작
         if (!tetromino.CheckValidMove())
         {
             // If not, destroy the temporary block and stop spawning
             Destroy(tempBlock);
+
             Debug.Log("Game Over");
+            UIHandler.instance.ActivateGameOverWindow();
             return;
         }
 
@@ -160,12 +163,13 @@ public class PlayField : MonoBehaviour
                 //Move all Down By 1
             }
         }
-        if(layersCleared > 0)
+        if (layersCleared >= 1 && GameManager.instance.isSpecialModeActive) // 모드가 활성화되었을 때만 게임을 클리어
         {
+            GameManager.instance.SetGameIsClear(); // 게임 오버 상태를 설정하고 클리어 창을 활성화
+            return;
         }
     }
-
-    bool CheckFullLayer(int y)
+        public bool CheckFullLayer(int y)
     {
         for (int x = 0; x < gridSizeX; x++)
         {
