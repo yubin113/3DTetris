@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     int highScore;
 
     bool gameIsOver;
-    bool gameIsClear;
+    public bool gameIsClear = false;
+
 
     float fallSpeed;
 
@@ -60,4 +61,14 @@ public class GameManager : MonoBehaviour
 
         UIHandler.instance.ActivateGameClearWindow();
     }
+    public bool IsGameClear()
+    {
+        return gameIsClear;
+    }
+    public void ResetGame()
+    {
+        gameIsClear = false;
+        // 다른 게임 상태 관련 변수들도 여기서 초기화
+    }
+
 }

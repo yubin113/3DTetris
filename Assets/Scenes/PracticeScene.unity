@@ -2359,9 +2359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a895e805718954585260aaf8493f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleScene: 
+  PracticeScene: 
   MainMenu: 
-  SamSam: 
 --- !u!1 &1744530958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2514,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1618280795}
         m_TargetAssemblyTypeName: PlayGame, Assembly-CSharp
-        m_MethodName: GotoMenu
+        m_MethodName: GameModerMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2648,7 +2647,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1618280795}
         m_TargetAssemblyTypeName: PlayGame, Assembly-CSharp
-        m_MethodName: StartGameMode
+        m_MethodName: StartMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1618280795}
+        m_TargetAssemblyTypeName: PlayGame, Assembly-CSharp
+        m_MethodName: OnRetryButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
