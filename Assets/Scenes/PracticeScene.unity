@@ -314,7 +314,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1618280795}
         m_TargetAssemblyTypeName: PlayGame, Assembly-CSharp
-        m_MethodName: GotoMenu
+        m_MethodName: GameModerMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2221,7 +2221,7 @@ MonoBehaviour:
   gridSizeY: 9
   gridSizeZ: 6
   blockList:
-  - {fileID: 1186849439307318952, guid: 6e8f78db057944e41b013d1c5033dee0, type: 3}
+  - {fileID: 2734551173680582155, guid: f711f638e9887084ab139a7c5b07ff17, type: 3}
   ghostList: []
   bottomPlane: {fileID: 997702542}
   N: {fileID: 42787895}
@@ -2779,7 +2779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0:00
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

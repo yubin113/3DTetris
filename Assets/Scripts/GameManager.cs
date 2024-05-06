@@ -14,9 +14,10 @@ public class GameManager : MonoBehaviour
     int playtime;
     int highScore;
 
-    bool gameIsOver;
+    public bool gameIsOver = false;
     public bool gameIsClear = false;
 
+    private float clearTime;
 
     float fallSpeed;
 
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
 
         UIHandler.instance.ActivateGameOverWindow();
     }
+    public bool IsGameOver() 
+    {
+        return gameIsOver;
+    }
+
     public bool ReadGameIsClear()
     {
         return gameIsClear;
@@ -68,7 +74,18 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         gameIsClear = false;
+        gameIsOver = false;
         // 다른 게임 상태 관련 변수들도 여기서 초기화
     }
+    // 클리어 시간을 설정하는 메소드
+    public void SetClearTime(float time)
+    {
+        clearTime = time;
+    }
 
+    // 클리어 시간을 반환하는 메소드
+    public float GetClearTime()
+    {
+        return clearTime;
+    }
 }

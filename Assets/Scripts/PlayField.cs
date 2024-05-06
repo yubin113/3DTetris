@@ -131,6 +131,7 @@ public class PlayField : MonoBehaviour
 
             Debug.Log("Game Over");
             UIHandler.instance.ActivateGameOverWindow();
+            GameManager.instance.SetGameIsOver();
             return;
         }
 
