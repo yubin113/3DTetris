@@ -324,9 +324,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7333053120959684760}
-  - component: {fileID: -7499049593924129341}
+  - component: {fileID: 6030792585030666976}
   m_Layer: 0
-  m_Name: Test Block
+  m_Name: tetro 2 Test Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ Transform:
   - {fileID: 72562921027862220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7499049593924129341
+--- !u!114 &6030792585030666976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186849439307318952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35776c12ab305ba44bbf24b34a10a025, type: 3}
+  m_Script: {fileID: 11500000, guid: c658c14dbb9a22947a3ffb82f8b40457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1322697577251951642
