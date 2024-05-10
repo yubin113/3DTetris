@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 157126880}
   - component: {fileID: 157126884}
   - component: {fileID: 157126885}
+  - component: {fileID: 157126886}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -390,7 +391,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f693c093169858541add7189b94a1a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameIsOver: 0
+  gameIsClear: 0
   isSpecialModeActive: 0
+--- !u!114 &157126886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157126879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db95cc490c4fd04d86fd5c824aa4aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftWin: 0
+  rightWin: 0
 --- !u!1 &673820824
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +421,7 @@ GameObject:
   - component: {fileID: 673820827}
   - component: {fileID: 673820826}
   m_Layer: 5
-  m_Name: endlessModeButton
+  m_Name: 2PGameModeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +490,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 673820827}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 157126884}
+        m_TargetAssemblyTypeName: PlayGame, Assembly-CSharp
+        m_MethodName: twoPlayersMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &673820827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,7 +642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Endless
+  m_text: '2P Game
 
     Mode'
   m_isRightToLeft: 0

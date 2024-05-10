@@ -28,10 +28,17 @@ public class PlayGame : MonoBehaviour
     }
     public void OnRetryButtonClicked()
     {
-        // °ÔÀÓ »óÅÂ ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         GameManager.instance.ResetGame();
 
-        // °ÔÀÓ Àå¸é Àç·Îµå
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿? ï¿½ï¿½Îµï¿?
         SceneManager.LoadScene("PracticeScene");
+    }
+    public void twoPlayersMode(){
+        SceneManager.LoadScene("2PGameScene");
+    }
+    public void twoPModeOnRetryButtonClicked(){
+        Game2PModeManager.instance.ResetGame();
+        SceneManager.LoadScene("2PGameScene");
     }
 }

@@ -127,15 +127,29 @@ public class PlayField2 : MonoBehaviour
         // 블록 생성기 위치까지 도달 시 동작 중단, 블록 2종류 이상 사용 시 동작
         if (!tetromino2.CheckValidMove())
         {
+
             // If not, destroy the temporary block and stop spawning
             Destroy(tempBlock);
 
             Debug.Log("Game Over");
             // UIHandler.instance.ActivateGameOverWindow();
-            GameManager.instance.SetGameIsOver();
+            //GameManager.instance.SetGameIsOver();
+            Game2PModeManager.instance.setRightWin();
+            Debug.Log("Left: " + Game2PModeManager.instance.getRightWin());
+            return;
+        }
+        if(Game2PModeManager.instance.getLeftWin()){
+            Destroy(tempBlock);  
             return;
         }
 
+        // if (Game2PModeManager.instance != null) {
+        //     if (Game2PModeManager.instance.getRightWin()) {
+        //     // Do something
+        //     }
+        // } else {
+        //     Debug.LogError("Game2PModeManager.instance is null");
+        // }
         // if(GameManager.instance.IsGameClear())// 게임이 클리어되었다면 블록 생성을 중단
         // {
         //     Destroy(tempBlock);

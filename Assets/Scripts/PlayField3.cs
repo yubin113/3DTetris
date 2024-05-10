@@ -131,9 +131,21 @@ public class PlayField3 : MonoBehaviour
             Debug.Log("Game Over");
             // UIHandler.instance.ActivateGameOverWindow();
             //GameManager.instance.SetGameIsOver();
+
+            Game2PModeManager.instance.setLeftWin();
+
+            return;
+        }
+        if(Game2PModeManager.instance.getRightWin()){
+            Destroy(tempBlock);
             return;
         }
 
+        // Debug.Log(Game2PModeManager.instance.getLeftWin());
+        // if(Game2PModeManager.instance.getLeftWin()){
+        //     Destroy(tempBlock);
+        //     return;
+        // }
         // if(GameManager.instance.IsGameClear())// 게임이 클리어되었다면 블록 생성을 중단
         // {
         //     Destroy(tempBlock);

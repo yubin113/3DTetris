@@ -24,11 +24,12 @@ public class GameMode : MonoBehaviour
     }
     public void OnRetryButtonClicked()
     {
-        // ╟тюс ╩Себ цй╠Бх╜
+        // О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫й╠О©╫х╜
         GameManager.instance.ResetGame();
 
-        // ╟тюс юЕ╦И юГ╥н╣Е
+        // О©╫О©╫О©╫О©╫ О©╫О©╫О©╫ О©╫О©╫н╣О©╫
         SceneManager.LoadScene("PracticeScene");
     }
 
+    
 }
