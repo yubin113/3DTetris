@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7677548007386801972}
   - component: {fileID: 3657566484997295685}
   - component: {fileID: 7182423009276569898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 705668029228393913}
   - component: {fileID: 6090282891990765142}
   - component: {fileID: 1724797797898843868}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7333053120959684760}
   - component: {fileID: -5785694441647918479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tetro 2 O Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 5463081583652151589}
   - component: {fileID: 5151066522180712938}
   - component: {fileID: 1260980954946070012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 2343366362360690631}
   - component: {fileID: 5726356768538504797}
   - component: {fileID: 4544634176915039518}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 319058908836607662}
   - component: {fileID: 6085759935669143748}
   - component: {fileID: 1831792977726244807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 1262747478490797156}
   - component: {fileID: 3293742377726400556}
   - component: {fileID: 8565771481543115916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 1054378921736639268}
   - component: {fileID: 5873278308657072289}
   - component: {fileID: 8602798649792247473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 8513526581792785751}
   - component: {fileID: 5841857148646809358}
   - component: {fileID: 5454164253828890913}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

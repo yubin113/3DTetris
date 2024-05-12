@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateAround : MonoBehaviour
+public class RotateAround2 : MonoBehaviour
 {
 
     //메인 카메라
@@ -22,23 +22,30 @@ public class RotateAround : MonoBehaviour
     void Update()
     {
         transform.LookAt(target);
-        
+
         OrbitWithArrowKeys();
     }
 
     void OrbitWithArrowKeys()
     {
-        float horizontalInput = 0;
-        float verticalInput = 0;
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        float horizontalInput = 0f;
+        float verticalInput = 0f;
+        if (Input.GetKey(KeyCode.Comma))
         {
-            horizontalInput = Input.GetAxis("Horizontal");
+            horizontalInput = -1f; // 왼쪽 화살표키
+        }
+        else if (Input.GetKey(KeyCode.Slash))
+        {
+            horizontalInput = 1f; // 오른쪽 화살표키
         }
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.L))
         {
-            verticalInput = Input.GetAxis("Vertical");
+            verticalInput = 1f; // 위쪽 화살표키
+        }
+        else if (Input.GetKey(KeyCode.Period))
+        {
+            verticalInput = -1f; // 아래쪽 화살표키
         }
 
         if (horizontalInput != 0 || verticalInput != 0)
@@ -46,15 +53,15 @@ public class RotateAround : MonoBehaviour
             float angleY = horizontalInput * sensitivity;
             float angleX = verticalInput * sensitivity;
 
-        // X AXIS
-        Vector3 angles = rotTarget.transform.eulerAngles;
-        angles.x += angleX;
-        angles.x = ClampAngle(angles.x, -85f, 85f);
+            // X AXIS
+            Vector3 angles = rotTarget.transform.eulerAngles;
+            angles.x += angleX;
+            angles.x = ClampAngle(angles.x, -85f, 85f);
 
-        rotTarget.transform.eulerAngles = angles;
+            rotTarget.transform.eulerAngles = angles;
 
-        // Y AXIS
-        target.RotateAround(target.position, Vector3.up, angleY);
+            // Y AXIS
+            target.RotateAround(target.position, Vector3.up, angleY);
         }
         float ClampAngle(float angle, float from, float to)
         {
@@ -65,5 +72,5 @@ public class RotateAround : MonoBehaviour
             return Mathf.Min(angle, to);
         }
     }
-    
+
 }

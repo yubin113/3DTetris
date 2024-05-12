@@ -9,6 +9,7 @@ public class UI2PModeHandler : MonoBehaviour
     public static UI2PModeHandler instance;
 
     public GameObject gameOverWindow;
+    public TextMeshProUGUI textMeshPro;
 
     private void Awake(){
         instance = this;
@@ -20,8 +21,9 @@ public class UI2PModeHandler : MonoBehaviour
         gameOverWindow.SetActive(false);
     }
 
-    public void ActivateGameOverWindow(){
+    public void ActivateGameOverWindow(String s){
         //gameOverWindow.GetComponent<TextMeshPro>().text = s;
+        textMeshPro.text = s;
         gameOverWindow.SetActive(true);
         
     }

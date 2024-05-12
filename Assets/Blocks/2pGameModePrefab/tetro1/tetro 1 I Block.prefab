@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7119603532953021454}
   - component: {fileID: 7119603532953021455}
   - component: {fileID: 7119603532953021452}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 7119603533025393392}
   - component: {fileID: 7119603533025393393}
   - component: {fileID: 7119603533025393398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 7119603533143675841}
   - component: {fileID: 7119603533143675846}
   - component: {fileID: 7119603533143675847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7119603534125494491}
   - component: {fileID: 7119603534125494488}
   - component: {fileID: 7119603534125494489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7119603534254364944}
   - component: {fileID: -8501356813967590589}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tetro 1 I Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
