@@ -7,7 +7,7 @@ public class Tetromino2 : MonoBehaviour
 {
     float prevTime;
     float fallTime = 1.4f;
-
+ 
  
     void Start()
     {
@@ -25,6 +25,7 @@ public class Tetromino2 : MonoBehaviour
         {
             transform.position += Vector3.down;
 
+            // Debug.Log("Block Position: " + transform.position);
 
             if (!CheckValidMove())
             {

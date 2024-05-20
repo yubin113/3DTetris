@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateAround2 : MonoBehaviour
+public class RotateAround3 : MonoBehaviour
 {
 
     //메인 카메라

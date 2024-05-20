@@ -178,8 +178,12 @@ public class PlayField3 : MonoBehaviour
                 DeleteLayerAt(y);
                 MoveAllLayerDown(y);
                 //Move all Down By 1
+                //현재는 playfield3 한면 다 채우면 playfield2에 실행되게 함
+                PlayField2.instance.UpdateGridAfterBlockDestroyed();
+                
             }
         }
+        
             // if (layersCleared >= 1 && GameManager.instance.isSpecialModeActive) // 모드가 활성화되었을 때만 게임을 클리어
             // {
             //     GameManager.instance.SetGameIsClear(); // 게임 오버 상태를 설정하고 클리어 창을 활성화

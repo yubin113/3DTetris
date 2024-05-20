@@ -24,6 +24,8 @@ public class PlayGame : MonoBehaviour
     }
     public void GameModerMenu()
     {
+        GameManager.instance.ResetGame();
+        GameManager.instance.SetGameIsResumed();
         SceneManager.LoadScene("Gamemode");
     }
     public void OnRetryButtonClicked()
@@ -31,8 +33,15 @@ public class PlayGame : MonoBehaviour
         // ���� ���� �ʱ�ȭ
         GameManager.instance.ResetGame();
 
-        // ���� ���? ��ε�?
+        // ���� ���? ��ε�?
         SceneManager.LoadScene("PracticeScene");
+    }
+    public void IsResume(){
+        GameManager.instance.SetGameIsResumed();
+    }
+    public void IsRetryWhenPause(){
+        SceneManager.LoadScene("PracticeScene");
+        GameManager.instance.SetGameIsResumed();
     }
     public void twoPlayersMode(){
         SceneManager.LoadScene("2PGameScene");
@@ -41,4 +50,16 @@ public class PlayGame : MonoBehaviour
         Game2PModeManager.instance.ResetGame();
         SceneManager.LoadScene("2PGameScene");
     }
+    public void twoPlayersModePause(){
+        Game2PModeManager.instance.SetGameIsPaused();
+    }
+    public void twoPlayersModeResume(){
+        Game2PModeManager.instance.SetGameIsResumed();
+    }
+    public void twoPlayerModeBackToHome()
+    {
+        Game2PModeManager.instance.SetGameIsResumed();
+        SceneManager.LoadScene("Gamemode");
+    }
+
 }

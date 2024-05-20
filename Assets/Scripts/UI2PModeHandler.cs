@@ -9,9 +9,13 @@ public class UI2PModeHandler : MonoBehaviour
     public static UI2PModeHandler instance;
 
     public GameObject gameOverWindow;
-    public TextMeshProUGUI textMeshPro;
+    public GameObject gamePauseWindow;
 
-    private void Awake(){
+    public TextMeshProUGUI textMeshPro;
+    public GameObject rotateAround;
+
+    private void Awake()
+    {
         instance = this;
     }
 
@@ -19,13 +23,24 @@ public class UI2PModeHandler : MonoBehaviour
     void Start()
     {
         gameOverWindow.SetActive(false);
+        gamePauseWindow.SetActive(false);
     }
 
-    public void ActivateGameOverWindow(String s){
+    public void ActivateGameOverWindow(String s)
+    {
         //gameOverWindow.GetComponent<TextMeshPro>().text = s;
         textMeshPro.text = s;
         gameOverWindow.SetActive(true);
-        
+        //게임종료시 카메라 회전 종료되게 만듦
+        rotateAround.GetComponent<RotateAround>().enabled = false;
+    }
+    public void ActivateGamePuaseWindow()
+    {
+        gamePauseWindow.SetActive(true);
+    }
+    public void DeactivateGamePuaseWindow()
+    {
+        gamePauseWindow.SetActive(false);
     }
 
 }

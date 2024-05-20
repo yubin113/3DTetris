@@ -8,6 +8,7 @@ public class Game2PModeManager : MonoBehaviour
 
     public bool leftWin = false;
     public bool rightWin = false;
+    public bool gameIsPaused = false;
     
     private void Awake()
     {
@@ -45,6 +46,17 @@ public class Game2PModeManager : MonoBehaviour
     public void ResetGame(){
         leftWin = false;
         rightWin = false;
+        SetGameIsResumed();
+    }
+    public void SetGameIsPaused(){
+        gameIsPaused = true;
+        Time.timeScale = 0f;
+        UI2PModeHandler.instance.ActivateGamePuaseWindow();
+    }
+    public void SetGameIsResumed(){
+        gameIsPaused = false;
+        Time.timeScale = 1f;
+        UI2PModeHandler.instance.DeactivateGamePuaseWindow();
     }
 
 }

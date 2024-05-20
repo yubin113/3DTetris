@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateAround : MonoBehaviour
+public class RotateAround2P : MonoBehaviour
 {
 
     //메인 카메라
@@ -24,18 +24,16 @@ public class RotateAround : MonoBehaviour
         transform.LookAt(target);
         
         OrbitWithArrowKeys();
-        
+
         //일시정지 기능
         if(Input.GetKeyDown(KeyCode.Escape)){
             Debug.Log("escape");
-            if(GameManager.instance.gameIsPaused){
-                GameManager.instance.SetGameIsResumed();
+            if(Game2PModeManager.instance.gameIsPaused){
+                Game2PModeManager.instance.SetGameIsResumed();
             }else{
-                GameManager.instance.SetGameIsPaused();
+                Game2PModeManager.instance.SetGameIsPaused();
             }
         }
-
-        
     }
 
     void OrbitWithArrowKeys()

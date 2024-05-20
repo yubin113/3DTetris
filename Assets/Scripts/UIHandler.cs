@@ -10,6 +10,8 @@ public class UIHandler : MonoBehaviour
        
     public GameObject gameOverWindow;
     public GameObject gameClearWindow;
+    //일시정지 기능
+    public GameObject gamePauseWindow;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class UIHandler : MonoBehaviour
     {
         gameOverWindow.SetActive(false);
         gameClearWindow.SetActive(false);
+        gamePauseWindow.SetActive(false);
     }
 
         
@@ -36,6 +39,12 @@ public class UIHandler : MonoBehaviour
     public void ActivateGameClearWindow()
     {
         gameClearWindow.SetActive(true);
+    }
+    public void ActivateGamePuaseWindow(){
+        gamePauseWindow.SetActive(true);
+    }
+    public void DeactivateGamePuaseWindow(){
+        gamePauseWindow.SetActive(false);
     }
    // public void OnSpecialModeButtonClicked()
   //  {

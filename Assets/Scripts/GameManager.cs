@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public bool isSpecialModeActive = false;
 
+    public bool gameIsPaused = false;
+
     private void Awake()
     {
         instance = this;
@@ -32,7 +34,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.GetInt("High Score", highScore);
     }
-
    
    public float ReadFallSpeed()
     {
@@ -75,17 +76,29 @@ public class GameManager : MonoBehaviour
     {
         gameIsClear = false;
         gameIsOver = false;
-        // ´Ù¸¥ °ÔÀÓ »óÅÂ °ü·Ã º¯¼öµéµµ ¿©±â¼­ ÃÊ±âÈ­
+        gameIsPaused = false;
+        // ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½éµµ ï¿½ï¿½ï¿½â¼­ ï¿½Ê±ï¿½È­
     }
-    // Å¬¸®¾î ½Ã°£À» ¼³Á¤ÇÏ´Â ¸Þ¼Òµå
+    // Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
     public void SetClearTime(float time)
     {
         clearTime = time;
     }
 
-    // Å¬¸®¾î ½Ã°£À» ¹ÝÈ¯ÇÏ´Â ¸Þ¼Òµå
+    // Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
     public float GetClearTime()
     {
         return clearTime;
+    }
+
+    public void SetGameIsPaused(){
+        gameIsPaused = true;
+        Time.timeScale = 0f;
+        UIHandler.instance.ActivateGamePuaseWindow();
+    }
+    public void SetGameIsResumed(){
+        gameIsPaused = false;
+        Time.timeScale = 1f;
+        UIHandler.instance.DeactivateGamePuaseWindow();
     }
 }
