@@ -198,6 +198,7 @@ public class PlayField2 : MonoBehaviour
                 DeleteLayerAt(y);
                 MoveAllLayerDown(y);
                 //Move all Down By 1
+                PlayField3.instance.UpdateGridAfterBlockDestroyed();
             }
         }
     }

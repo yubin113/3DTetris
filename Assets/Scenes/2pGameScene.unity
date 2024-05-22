@@ -1365,11 +1365,12 @@ MonoBehaviour:
   gridSizeY: 9
   gridSizeZ: 6
   blockList:
-  - {fileID: 1186849439307318952, guid: 7ccd9d8b97a036f48a128e8c833732d1, type: 3}
-  - {fileID: 1186849439307318952, guid: 7ccd9d8b97a036f48a128e8c833732d1, type: 3}
-  - {fileID: 1186849439307318952, guid: 7ccd9d8b97a036f48a128e8c833732d1, type: 3}
-  - {fileID: 1186849439307318952, guid: 7ccd9d8b97a036f48a128e8c833732d1, type: 3}
+  - {fileID: 2857921341720936074, guid: 4f33d34a8dfde1749a57666520d01b90, type: 3}
+  - {fileID: 7119603534254364945, guid: 87bbdd729d14007439b6c3786f384984, type: 3}
+  - {fileID: 2734551173680582155, guid: 3b0d99f6bfe758645a1e93d75148f63b, type: 3}
+  - {fileID: 1186849439307318952, guid: c9c4e83d93caf9941be7a3c8837380b8, type: 3}
   ghostList: []
+  invincibleBlock: {fileID: 1186849439307318952, guid: e5d7d9e31457443488cb7162fa823950, type: 3}
   bottomPlane: {fileID: 2073065916}
   N: {fileID: 1173963985}
   S: {fileID: 1213042162}
@@ -2672,10 +2673,10 @@ MonoBehaviour:
   gridSizeY: 9
   gridSizeZ: 6
   blockList:
-  - {fileID: 2734551173680582155, guid: 2692e3b15d929554e9a9638899994367, type: 3}
+  - {fileID: 1186849439307318952, guid: bb3c539e8fcbe3046af9de7a0abb7f97, type: 3}
   - {fileID: 2857921341720936074, guid: c114c80c6160fb249bb1e2b3b27286c9, type: 3}
   - {fileID: 7119603534254364945, guid: 17379a53ac0204f42ac22645a5daecda, type: 3}
-  - {fileID: 1186849439307318952, guid: bb3c539e8fcbe3046af9de7a0abb7f97, type: 3}
+  - {fileID: 1186849439307318952, guid: a85c3e757033fc7469a552b01537e43b, type: 3}
   ghostList: []
   invincibleBlock: {fileID: 1186849439307318952, guid: a3b5cb0019a579845b07ce92fead858e, type: 3}
   bottomPlane: {fileID: 997702542}

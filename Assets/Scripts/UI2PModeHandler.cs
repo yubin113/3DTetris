@@ -32,7 +32,7 @@ public class UI2PModeHandler : MonoBehaviour
         textMeshPro.text = s;
         gameOverWindow.SetActive(true);
         //게임종료시 카메라 회전 종료되게 만듦
-        rotateAround.GetComponent<RotateAround>().enabled = false;
+        rotateAround.GetComponent<RotateAround2P>().enabled = false;
     }
     public void ActivateGamePuaseWindow()
     {

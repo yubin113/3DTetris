@@ -19,6 +19,8 @@ public class PlayField3 : MonoBehaviour
     public GameObject[] blockList;
     //고스트 집합(추후 추가)
     public GameObject[] ghostList;
+    //파괴안되는 블록
+    public GameObject invincibleBlock;
     
     //바닥
     [Header("Playfield Visuals")]
@@ -94,6 +96,17 @@ public class PlayField3 : MonoBehaviour
                 theGrid[(int)pos.x, (int)pos.y, (int)pos.z - 30] = child;
             }
         }
+    }
+    //파괴안되는 블록인지 확인
+    public bool IsInvincibleBlock(GameObject block)
+    {
+        // 블록이 null이라면 invincible 블록이 아님
+        if (block == null)
+        {
+            return false;
+        }
+        // 태그가 InvincibleBlock인 경우에만 true 반환
+        return block.CompareTag("invincibleBlock");
     }
     public Transform GetTransformOnGridPos(Vector3 pos)
     {
@@ -197,7 +210,7 @@ public class PlayField3 : MonoBehaviour
         {
             for (int z = 0; z < gridSizeZ; z++)
             {
-                if(theGrid[x,y,z] == null)
+                if(theGrid[x, y, z] == null || IsInvincibleBlock(theGrid[x, y, z].gameObject))
                 {
                     return false;
                 }
@@ -212,9 +225,11 @@ public class PlayField3 : MonoBehaviour
         {
             for (int z = 0; z < gridSizeZ; z++)
             {
-                Destroy(theGrid[x, y, z].gameObject);
-
-                theGrid[x, y, z] = null;
+                if (!IsInvincibleBlock(theGrid[x, y, z].gameObject))
+                {
+                    Destroy(theGrid[x, y, z].gameObject);
+                    theGrid[x, y, z] = null;
+                }
             }
         }
     }
@@ -234,7 +249,7 @@ public class PlayField3 : MonoBehaviour
         {
             for (int z = 0; z < gridSizeZ; z++)
             {
-                if(theGrid[x,y,z] != null)
+                if (theGrid[x, y, z] != null && !IsInvincibleBlock(theGrid[x, y, z].gameObject))
                 {
                     theGrid[x, y - 1, z] = theGrid[x, y, z];
                     theGrid[x, y, z] = null;
@@ -322,5 +337,95 @@ public class PlayField3 : MonoBehaviour
             //W.GetComponent<MeshRenderer>().sharedMaterial.mainTextureScale = new Vector2(gridSizeZ, gridSizeY);
         }
 
+    }
+    //한칸씩 위로 보내는 함수
+    void MoveOneLayerUp(int y)
+    {
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int z = 0; z < gridSizeZ; z++)
+            {
+                if (theGrid[x, y, z] != null)
+                {
+                    theGrid[x, y + 1, z] = theGrid[x, y, z];
+                    theGrid[x, y, z] = null;
+                    theGrid[x, y + 1, z].position += Vector3.up;
+                }
+            }
+        }   
+    }
+
+    //파괴못하는 블록 생성 함수
+    public void UpdateGridAfterBlockDestroyed()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            return;
+        }
+        Tetromino3 currentBlock = FindObjectOfType<Tetromino3>();
+        // Debug.Log("currentBlock: " + currentBlock.transform.position);
+        
+
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int z = 0; z < gridSizeZ; z++)
+            {
+                for (int y = 0; y < gridSizeY; y++)
+                {
+                    if (theGrid[x, y, z] != null && theGrid[x, y, z].parent == currentBlock.transform)
+                    {
+                        Destroy(theGrid[x, y, z].gameObject);
+                        theGrid[x, y, z] = null;
+                    }
+                }
+            }
+        }
+
+
+        for (int y = gridSizeY - 2; y >= 0; y--)
+        {
+            MoveOneLayerUp(y);   //76543210 
+        }
+
+        Vector3 spawnPoint = new Vector3((int)(transform.position.x + (float)gridSizeX / 2 - 1),
+                                        (int)transform.position.y,
+                                        (int)(transform.position.z + (float)gridSizeZ / 2 + 2));
+
+        //Debug.Log("Spawn Point: " + spawnPoint);
+
+        //Spawn The Block
+        GameObject tempBlock = Instantiate(invincibleBlock, spawnPoint, Quaternion.identity) as GameObject;
+        // Tetromino2 tetromino2 = tempBlock.GetComponent<Tetromino2>();
+
+        StartCoroutine(DestroyBlockAfterTime(tempBlock, 10f));
+    }   
+
+    //코루틴 이용
+    private IEnumerator DestroyBlockAfterTime(GameObject block, float delay){
+        Tetromino3 tetromino3 = block.GetComponent<Tetromino3>();
+        UpdateGrid(tetromino3);
+
+        yield return new WaitForSeconds(delay);
+
+        // Remove block from grid
+        if (block != null)
+        {
+            foreach (Transform child in block.transform)
+            {
+                Vector3 pos = Round(child.position);
+                if (pos.y < gridSizeY)
+                {
+                    theGrid[(int)pos.x, (int)pos.y, (int)pos.z - 30] = null;
+                }
+            }
+
+            Destroy(block);
+        }
+
+        // After removing the block, move layers down
+        for (int y = 1; y < gridSizeY; y++)
+        {
+            MoveOneLayerDown(y);
+        }
     }
 }
