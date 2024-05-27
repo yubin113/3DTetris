@@ -24,7 +24,7 @@ public class Game2PModeManager : MonoBehaviour
         if (UI2PModeHandler.instance == null) {
             Debug.LogError("UI2PModeHandler instance is null");
         } else {
-            UI2PModeHandler.instance.ActivateGameOverWindow("Left Win!");
+            UI2PModeHandler.instance.ActivateGameOverWindow("왼쪽 플레이어 승!");
         }
 
     }
@@ -36,7 +36,7 @@ public class Game2PModeManager : MonoBehaviour
         if (UI2PModeHandler.instance == null) {
             Debug.LogError("UI2PModeHandler instance is null");
         } else {
-            UI2PModeHandler.instance.ActivateGameOverWindow("Right Win!");
+            UI2PModeHandler.instance.ActivateGameOverWindow("오른쪽 플레이어 승!");
         }
         // UI2PModeHandler.instance.ActivateGameOverWindow();
     }

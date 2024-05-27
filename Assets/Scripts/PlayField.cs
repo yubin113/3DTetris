@@ -114,7 +114,7 @@ public class PlayField : MonoBehaviour
                                          (int)transform.position.y + gridSizeY,
                                          (int)(transform.position.z + (float)gridSizeZ / 2));
 
-
+        
 
         GameObject tempBlock = Instantiate(blockList[randomIndex], spawnPoint, Quaternion.identity) as GameObject;
 
