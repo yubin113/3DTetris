@@ -114,11 +114,10 @@ public class PlayField : MonoBehaviour
                                          (int)transform.position.y + gridSizeY,
                                          (int)(transform.position.z + (float)gridSizeZ / 2));
 
+        
 
-        //Spawn The Block
         GameObject tempBlock = Instantiate(blockList[randomIndex], spawnPoint, Quaternion.identity) as GameObject;
-        //Ghost
-        //GameObject newGhost = Instantiate(ghostList[randomIndex], spawnPoint, Quaternion.identity) as GameObject;
+
         Tetromino tetromino = tempBlock.GetComponent<Tetromino>();
 
         // Check if the spawn position is valid
@@ -126,7 +125,6 @@ public class PlayField : MonoBehaviour
         // 블록 생성기 위치까지 도달 시 동작 중단, 블록 2종류 이상 사용 시 동작
         if (!tetromino.CheckValidMove())
         {
-            // If not, destroy the temporary block and stop spawning
             Destroy(tempBlock);
 
             Debug.Log("Game Over");
@@ -159,14 +157,15 @@ public class PlayField : MonoBehaviour
         int layersCleared = 0;
         for(int y = gridSizeY-1; y >= 0; y--)
         {
-            //Check full Layer
+            //레이어 체크
             if (CheckFullLayer(y))
             {
                 layersCleared++;
-                //Delete some blocks
+                //해당 y 삭제
                 DeleteLayerAt(y);
+                //모든 블록 한 칸씩 아래로 내림
                 MoveAllLayerDown(y);
-                //Move all Down By 1
+                
             }
         }
             if (layersCleared >= 1 && GameManager.instance.isSpecialModeActive) // 모드가 활성화되었을 때만 게임을 클리어

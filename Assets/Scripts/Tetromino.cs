@@ -26,26 +26,20 @@ public class Tetromino : MonoBehaviour
             transform.position += Vector3.down;
 
 
-            if (!CheckValidMove())
+            if (!CheckValidMove())   //블록움직일 수 있는지 확인
             {
+                //블록이 움직일 수 경우
+
                 transform.position += Vector3.up;
-                //DELETE LAYER IF POSSIBLE
+                //블록이 다차면 레이어 삭제 함수
                 PlayField.instance.DeleteLayer();
                 enabled = false;
-                //CREATE A NEW TETRIS BLOCK
+                //새 블록 생성
                 PlayField.instance.SpawnNewBlock();
-
-                // if (!GameManager.instance.ReadGameIsOver())
-                // {
-                //     FindObjectOfType<AudioManager>().Play("Impact");
-                //     PlayField.instance.SpawnNewBlock();
-                //     PlayField.instance.SpawnNewBlock();
-
-                // }
             }
             else
             {
-                //UPDATE THE GRID
+                //보드 업데이트
                 PlayField.instance.UpdateGrid(this);
             }
             prevTime = Time.time;
@@ -128,7 +122,6 @@ public class Tetromino : MonoBehaviour
         else
         {
             PlayField.instance.UpdateGrid(this);
-            // FindObjectOfType<AudioManager>().Play("Turn");
         }
     }
 

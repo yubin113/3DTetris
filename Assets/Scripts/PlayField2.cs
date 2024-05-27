@@ -20,7 +20,7 @@ public class PlayField2 : MonoBehaviour
     //고스트 집합(추후 추가)
     public GameObject[] ghostList;
     //파괴안되는 블록
-    public GameObject invincibleBlock;
+    public GameObject[] invincibleBlock;
 
     //바닥
     [Header("Playfield Visuals")]
@@ -89,10 +89,10 @@ public class PlayField2 : MonoBehaviour
             }
         }
 
-        foreach(Transform child in block.transform)
+        foreach (Transform child in block.transform)
         {
             Vector3 pos = Round(child.position);
-            if(pos.y < gridSizeY)
+            if (pos.y < gridSizeY)
             {
                 theGrid[(int)pos.x, (int)pos.y, (int)pos.z] = child;
             }
@@ -114,7 +114,7 @@ public class PlayField2 : MonoBehaviour
 
     public Transform GetTransformOnGridPos(Vector3 pos)
     {
-        if(pos.y > gridSizeY - 1)
+        if (pos.y > gridSizeY - 1)
         {
             return null;
         }
@@ -154,7 +154,8 @@ public class PlayField2 : MonoBehaviour
             Debug.Log("Left: " + Game2PModeManager.instance.getRightWin());
             return;
         }
-        if(Game2PModeManager.instance.getLeftWin()){
+        if (Game2PModeManager.instance.getLeftWin())
+        {
             Destroy(tempBlock);
             return;
         }
@@ -188,7 +189,7 @@ public class PlayField2 : MonoBehaviour
     public void DeleteLayer()
     {
         int layersCleared = 0;
-        for(int y = gridSizeY-1; y >= 0; y--)
+        for (int y = gridSizeY - 1; y >= 0; y--)
         {
             //Check full Layer
             if (CheckFullLayer(y))
@@ -198,6 +199,18 @@ public class PlayField2 : MonoBehaviour
                 DeleteLayerAt(y);
                 MoveAllLayerDown(y);
                 //Move all Down By 1
+
+                int eventIndex = Random.Range(0, 2);
+                if (eventIndex == 0)
+                {
+                    PlayField3.instance.UpdateGridAfterBlockDestroyed();
+                }
+                else
+                {
+                    DeleteEventLayerAt(y);
+                    MoveAllLayerDown(y);
+                }
+
             }
         }
     }
@@ -217,6 +230,20 @@ public class PlayField2 : MonoBehaviour
             }
         }
     }
+    void DeleteEventLayerAt(int y)
+    {
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int z = 0; z < gridSizeZ; z++)
+            {
+                if (theGrid[x, y, z] != null)
+                {
+                    Destroy(theGrid[x, y, z].gameObject);
+                    theGrid[x, y, z] = null;
+                }
+            }
+        }
+    }
 
     public bool CheckFullLayer(int y)
     {
@@ -224,11 +251,11 @@ public class PlayField2 : MonoBehaviour
         {
             for (int z = 0; z < gridSizeZ; z++)
             {
-                if (theGrid[x, y, z] == null || IsInvincibleBlock(theGrid[x, y, z].gameObject))
+                if (theGrid[x, y, z] == null || IsInvincibleBlock(theGrid[x, y, z]?.gameObject))
                 {
                     return false;
                 }
-            }   
+            }
         }
 
         return true;
@@ -252,9 +279,9 @@ public class PlayField2 : MonoBehaviour
             {
                 if (theGrid[x, y, z] != null && !IsInvincibleBlock(theGrid[x, y, z].gameObject))
                 {
-                        theGrid[x, y - 1, z] = theGrid[x, y, z];
-                        theGrid[x, y, z] = null;
-                        theGrid[x, y - 1, z].position += Vector3.down;
+                    theGrid[x, y - 1, z] = theGrid[x, y, z];
+                    theGrid[x, y, z] = null;
+                    theGrid[x, y - 1, z].position += Vector3.down;
                 }
             }
         }
@@ -262,16 +289,16 @@ public class PlayField2 : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if(bottomPlane != null)
+        if (bottomPlane != null)
         {
             //RESIZE BOTTOM PLANE
-            Vector3 scaler = new Vector3((float)gridSizeX/10, 1, (float)gridSizeZ / 10);
+            Vector3 scaler = new Vector3((float)gridSizeX / 10, 1, (float)gridSizeZ / 10);
             bottomPlane.transform.localScale = scaler;
 
             //REPOSITION
-            bottomPlane.transform.position = new Vector3(transform.position.x + (float)gridSizeX/2,
+            bottomPlane.transform.position = new Vector3(transform.position.x + (float)gridSizeX / 2,
                                                         transform.position.y,
-                                                         transform.position.z + (float)gridSizeZ/2);
+                                                         transform.position.z + (float)gridSizeZ / 2);
 
             //RETILE MATERIAL
             bottomPlane.GetComponent<MeshRenderer>().sharedMaterial.mainTextureScale = new Vector2(gridSizeX, gridSizeZ);
@@ -285,7 +312,7 @@ public class PlayField2 : MonoBehaviour
 
             //REPOSITION
             N.transform.position = new Vector3(transform.position.x + (float)gridSizeX / 2,
-                                                         transform.position.y +(float)gridSizeY/2,
+                                                         transform.position.y + (float)gridSizeY / 2,
                                                         transform.position.z + gridSizeZ);
 
             //RETILE MATERIAL
@@ -317,7 +344,7 @@ public class PlayField2 : MonoBehaviour
             //REPOSITION
             E.transform.position = new Vector3(transform.position.x + gridSizeX,
                                                         transform.position.y + (float)gridSizeY / 2,
-                                                         transform.position.z + (float)gridSizeZ/2);
+                                                         transform.position.z + (float)gridSizeZ / 2);
 
             //RETILE MATERIAL
             E.GetComponent<MeshRenderer>().sharedMaterial.mainTextureScale = new Vector2(gridSizeZ, gridSizeY);
@@ -354,9 +381,34 @@ public class PlayField2 : MonoBehaviour
                     theGrid[x, y + 1, z].position += Vector3.up;
                 }
             }
-        }   
+        }
     }
 
+    public void DeleteCurrentBlock()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            return;
+        }
+        Tetromino2 currentBlock = FindObjectOfType<Tetromino2>();
+        // Debug.Log("currentBlock: " + currentBlock.transform.position);
+
+
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int z = 0; z < gridSizeZ; z++)
+            {
+                for (int y = 0; y < gridSizeY; y++)
+                {
+                    if (theGrid[x, y, z] != null && theGrid[x, y, z].parent == currentBlock.transform)
+                    {
+                        Destroy(theGrid[x, y, z].gameObject);
+                        theGrid[x, y, z] = null;
+                    }
+                }
+            }
+        }
+    }
     //파괴못하는 블록 생성 함수
     public void UpdateGridAfterBlockDestroyed()
     {
@@ -366,7 +418,7 @@ public class PlayField2 : MonoBehaviour
         }
         Tetromino2 currentBlock = FindObjectOfType<Tetromino2>();
         // Debug.Log("currentBlock: " + currentBlock.transform.position);
-        
+
 
         for (int x = 0; x < gridSizeX; x++)
         {
@@ -395,15 +447,17 @@ public class PlayField2 : MonoBehaviour
 
         //Debug.Log("Spawn Point: " + spawnPoint);
 
+        int random = Random.Range(0, invincibleBlock.Length);
         //Spawn The Block
-        GameObject tempBlock = Instantiate(invincibleBlock, spawnPoint, Quaternion.identity) as GameObject;
+        GameObject tempBlock = Instantiate(invincibleBlock[random], spawnPoint, Quaternion.identity) as GameObject;
         // Tetromino2 tetromino2 = tempBlock.GetComponent<Tetromino2>();
 
         StartCoroutine(DestroyBlockAfterTime(tempBlock, 10f));
-    }   
+    }
 
     //코루틴 이용
-    private IEnumerator DestroyBlockAfterTime(GameObject block, float delay){
+    private IEnumerator DestroyBlockAfterTime(GameObject block, float delay)
+    {
         Tetromino2 tetromino2 = block.GetComponent<Tetromino2>();
         UpdateGrid(tetromino2);
 
